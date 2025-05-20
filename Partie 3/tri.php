@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>TP JS</title>
+    <title>Yoda & Luke</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="TP_Leo.css">
+    <link rel="stylesheet" href="tri.css">
 </head>
 <body>
     ...
