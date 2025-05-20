@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 20, 2025 at 03:47 PM
+-- Generation Time: May 20, 2025 at 04:56 PM
 -- Server version: 8.0.40
 -- PHP Version: 8.3.14
 
@@ -59,7 +59,8 @@ CREATE TABLE `Enseignant` (
 CREATE TABLE `Etudiant` (
   `idEtudiant` int NOT NULL,
   `nom` varchar(150) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `prenom` varchar(150) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `prenom` varchar(150) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `groupe` varchar(150) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
