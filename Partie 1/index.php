@@ -26,11 +26,11 @@ if (!empty($_POST["user"]) && !empty($_POST["mdp"])) {
     $mdp=$_POST["mdp"];
     
     $bdd= new mysqli('localhost','root','','SAE23');
-    $sql = "SELECT mot_de_passe FROM enseignant WHERE username = '$username'; ";
+    $sql = "SELECT idEnseignant,mot_de_passe FROM enseignant WHERE username = '$username'; ";
     $resultat=$bdd->query($sql);
     $row=$resultat->fetch_assoc(); 
     if (($row !== false && $row !== null) && $mdp==$row['mot_de_passe']) {
-        header('Location: appel.php');
+        header('Location: appel.php?id='.$row['idEnseignant']);
         exit();
     }
     echo "<script>alert('Nom d\'utilisateur ou mot de passe incorrect.');</script>";

@@ -42,4 +42,7 @@
     </form>
     <a href="consultation.html">Mode Consultation</a>
 </body>
+<?php 
+    $idEnseignant = $_GET['id']; 
+?>
 </html>
