@@ -1,6 +1,6 @@
 <?php
 // Partie 1 : Consultation
-$bdd=new mysqli("localhost","root","root","SAE23");
+$bdd=new mysqli("localhost","root","","SAE23");
 $resultat = null;
 
 if (((!empty($_POST['nom']) && !empty($_POST['prenom'])) || !empty($_POST['id'])) && (!empty($_POST['debut']) && !empty($_POST['fin']))) {
