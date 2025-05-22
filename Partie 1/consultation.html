@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Consultation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form method='POST' action="consultation.php">
+        <fieldset>
+            <legend>Etudiant</legend>
+            <label >Nom :</label>
+            <input type="text" name="nom">
+            <label >Prénom :</label>
+            <input type="text" name="prenom">
+            <label >N° :</label>
+            <input type="text" name="id">
+        </fieldset>
+        <fieldset>
+            <legend>Période</legend>
+            <label >Début :</label>
+            <input type="date" name="debut" require>
+            <label >Fin :</label>
+            <input type="date" name="fin" require>
+            <br><br>
+            <input type="submit" value="Consulter">
+        </fieldset>
+    </form>
+</body>
+</html>
