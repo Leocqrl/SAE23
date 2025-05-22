@@ -40,5 +40,6 @@
 
         </table>
     </form>
+    <a href="consultation.html">Mode Consultation</a>
 </body>
 </html>

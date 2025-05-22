@@ -17,24 +17,25 @@
             <br>
             <input type='reset' value='Effacer'>
             <input type='submit' value='Connexion'>
-</form>
+        </fieldset>
+    </form>
 </body>
-</html>
 <?php
-if (isset($_POST["user"]) && isset($_POST["mdp"])) {
+if (!empty($_POST["user"]) && !empty($_POST["mdp"])) {
     $username=(string)$_POST["user"];
     $mdp=$_POST["mdp"];
     
     $bdd= new mysqli('localhost','root','','SAE23');
     $sql = "SELECT mot_de_passe FROM enseignant WHERE username = '$username'; ";
     $resultat=$bdd->query($sql);
-    $resultat=$resultat->fetch_assoc();
-    $mdp_sql=$resultat['mot_de_passe'];
-
-    if ($mdp==$mdp_sql) {
+    $row=$resultat->fetch_assoc(); 
+    if (($row !== false && $row !== null) && $mdp==$row['mot_de_passe']) {
         header('Location: appel.php');
         exit();
-        
-    }   
+    }
+    echo "<script>alert('Nom d\'utilisateur ou mot de passe incorrect.');</script>";
+    echo "Nom d'utilisateur ou mot de passe incorrect.";
 }
 ?> 
+
+</html>
