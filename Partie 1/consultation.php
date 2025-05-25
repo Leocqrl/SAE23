@@ -39,6 +39,7 @@ if (((!empty($_POST['nom']) && !empty($_POST['prenom'])) || !empty($_POST['id'])
 }
 
 if (!empty($resultat)) {
+    $liste_etudiant = [];
     echo "<table>";
     echo "<tr><th>Nom</th><th>Prénom</th><th>ID</th><th>Date de Cours</th><th>Absence</th></tr>";
     while ($row = $resultat->fetch_assoc()) {
@@ -58,6 +59,13 @@ if (!empty($resultat)) {
         echo "<td>" . $row['date_Cours'] . "</td>";
         echo "<td>" . $abs . "</td>";
         echo "</tr>";
+        $liste_etudiant[]=[
+            'idEtudiant' => $row['idEtudiant'],
+            'nom' => $row['nom'],
+            'prenom' => $row['prenom'],
+            'date_Cours' => $row['date_Cours'],
+            'Absence' => $abs
+        ];
     }
 }
 ?>
