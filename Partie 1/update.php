@@ -1,7 +1,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $bdd=new mysqli("localhost","root","root","SAE23");
+    $bdd=new mysqli("localhost","root","","SAE23");
     $sql = [];
     for ($i=1; $i <= $_POST['N']; $i++) {
         $sql[] = ["UPDATE Absences SET Absence = '".$_POST["absence_".$i]."' WHERE idAbsences = '".$_POST['idAbsences_'.$i]."';"];
