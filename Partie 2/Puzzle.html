@@ -1,11 +1,74 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Slide Puzzle</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="Puzzle.css">
+  <meta charset="UTF-8">
+  <title>Jeu de Puzzle</title>
+  <link rel="stylesheet" href="puzzle.css">
 </head>
 <body>
-    ...
+
+<h1><img src="puzzle.png" alt="Puzzle" class="icone"> Jeu de Puzzle</h1>
+<p id="c">Coups : 0</p>
+
+<div class="puzzle-container">
+  <table>
+    <tr>
+      <td><button onclick="move(0)"></button></td>
+      <td><button onclick="move(1)"></button></td>
+      <td><button onclick="move(2)"></button></td>
+      <td><button onclick="move(3)"></button></td>
+    </tr>
+    <tr>
+      <td><button onclick="move(4)"></button></td>
+      <td><button onclick="move(5)"></button></td>
+      <td><button onclick="move(6)"></button></td>
+      <td><button onclick="move(7)"></button></td>
+    </tr>
+    <tr>
+      <td><button onclick="move(8)"></button></td>
+      <td><button onclick="move(9)"></button></td>
+      <td><button onclick="move(10)"></button></td>
+      <td><button onclick="move(11)"></button></td>
+    </tr>
+    <tr>
+      <td><button onclick="move(12)"></button></td>
+      <td><button onclick="move(13)"></button></td>
+      <td><button onclick="move(14)"></button></td>
+      <td><button onclick="move(15)"></button></td>
+    </tr>
+  </table>
+</div>
+
+<script>
+let b = document.querySelectorAll("button"), v = [...Array(15).keys()].map(x=>x+1).concat(""), c = 0;
+v.sort(()=>Math.random()-.5);
+
+function u() {
+  b.forEach((btn, i) => {
+    let val = v[i];
+    if (val) {
+      btn.style.backgroundImage = "url('image.jpg')";
+      btn.style.backgroundSize = "400px";
+      btn.style.backgroundPosition = `-${(val-1)%4*100}px -${Math.floor((val-1)/4)*100}px`;
+      btn.classList.remove("empty");
+    } else {
+      btn.style.background = "none";
+      btn.classList.add("empty");
+    }
+  });
+  document.getElementById("c").innerText = "Coups : " + c;
+}
+
+function move(i) {
+  [i-1,i+1,i-4,i+4].forEach(j=>{
+    if(j<0||j>15) return;
+    if(Math.abs(i%4-j%4)+Math.abs(Math.floor(i/4)-Math.floor(j/4))===1 && v[j]==="") {
+      [v[i],v[j]]=[v[j],v[i]]; c++; u();
+    }
+  });
+}
+
+u();
+</script>
 </body>
 </html>
