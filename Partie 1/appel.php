@@ -8,7 +8,7 @@
 <body>
     <form method="POST">
         <table>
-            <tr><td colspan='5'>
+            <tr><td colspan='6' class='select-cell'>
                 <select name='module'>
                     <option value="choix">choisissez votre module</option>
                     <optgroup label="Modules">
@@ -38,7 +38,9 @@
                     }
                 }
             ?>
-            <tr><td colspan='5'><input type='submit' value="Valider l'appel."></td></tr>
+            <tr>
+            <td colspan='3'>Cours de 3h :<input type='checkbox' name='3h' value="on"></td>
+            <td colspan='3'><input type='submit' value="Valider l'appel."></td></tr>
         </table>
     </form>
     <a href="consultation.html">Mode Consultation</a>
@@ -57,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $min_dif=PHP_INT_MAX; // Initialiser une grande différence
         foreach ($liste_horaire as $h) {
             $h = strtotime($h);
-            $difference = $heure_actuelle - $h;
+            $difference = abs($h - $heure_actuelle);
 
             if ($difference < $min_dif) {
                 $min_dif = $difference;
@@ -66,12 +68,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
     
         if ($heure_proche !== null) {
-            return date('H:i', $heure_proche);
+            return date('H:i:s', $heure_proche);
         }
         return $heure_proche;
     }
     $heure=horaire_valide($heure, $liste_horaire);
-    echo "<p>Heure détectée : $heure</p>";
+    if (!empty($_POST['3h'])) {
+        $heure2 = strtotime($heure."+1 hour +30 minutes");
+        $heure2 = date('H:i:s', $heure2);
+        $TF= TRUE;
+    } else {
+        $TF= FALSE;
+    }
 
     $resultat = $bdd->query("SELECT idEtudiant FROM Etudiant;");
     $liste_etudiant = [];
@@ -81,19 +89,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $N = count($liste_etudiant);
 
     if (isset($_POST['module']) && $_POST['module']!='choix') {
-        for ($i=1; $i <= $N; $i++) {
-            if (isset($_POST['absence_'.$i])) { 
-                $sql[]="INSERT INTO Absences (idEnseignant, Module, date_Cours, horaire, idEtudiant, Absence) VALUES ('$idEnseignant', '{$_POST['module']}', '".date('Y-m-d')."', '$heure', '{$liste_etudiant[$i-1]}', '{$_POST['absence_'.$i]}')";
-            } else {
-            echo "<p>Veuillez sélectionner un module et une absence pour chaque étudiant.</p>";
+        if ($TF===TRUE){
+            for ($i=1; $i <= $N; $i++) {
+                if (isset($_POST['absence_'.$i])) { 
+                    $sql[]="INSERT INTO Absences (idEnseignant, Module, date_Cours, horaire, idEtudiant, Absence) VALUES ('$idEnseignant', '{$_POST['module']}', '".date('Y-m-d')."', '$heure', '{$liste_etudiant[$i-1]}', '{$_POST['absence_'.$i]}')";
+                    $sql[]="INSERT INTO Absences (idEnseignant, Module, date_Cours, horaire, idEtudiant, Absence) VALUES ('$idEnseignant', '{$_POST['module']}', '".date('Y-m-d')."', '$heure2', '{$liste_etudiant[$i-1]}', '{$_POST['absence_'.$i]}')";
+                } else {
+                    echo "<script>alert('Veuillez sélectionner un module et faire l\'appel pour chaque étudiant.')</script>";
+                }
             }
+        } else {
+            for ($i=1; $i <= $N; $i++) {
+                if (isset($_POST['absence_'.$i])) { 
+                    $sql[]="INSERT INTO Absences (idEnseignant, Module, date_Cours, horaire, idEtudiant, Absence) VALUES ('$idEnseignant', '{$_POST['module']}', '".date('Y-m-d')."', '$heure', '{$liste_etudiant[$i-1]}', '{$_POST['absence_'.$i]}')";
+                } else {
+                    echo "<script>alert('Veuillez sélectionner un module et faire l\'appel pour chaque étudiant.')</script>";
+                }
+            } 
         }
         foreach ($sql as $query) {
             if (!$bdd->query($query)) {
-                echo "<p>Erreur lors de l'insertion des données : " . $bdd->error . "</p>";
+                echo "<script>alert('" . $bdd->error . "')</script>";
             }
         }
-        echo "<p>Appel enregistré avec succès.</p>";
+        echo "<script>alert('Appel enregistré avec succès.')</script>";
+    } else {
+        echo "<script>alert('Veuillez sélectionner un module et faire l\'appel pour chaque étudiant.')</script>";
     }
 }
     

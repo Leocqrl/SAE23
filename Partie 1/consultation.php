@@ -1,5 +1,6 @@
 <?php
 // Partie 1 : Consultation
+echo "<link rel='stylesheet' href='style.css'>";
 $bdd=new mysqli("localhost","root","","SAE23");
 $resultat = null;
 
@@ -35,7 +36,8 @@ if  (!empty($_POST['debut']) && !empty($_POST['fin'])) {
         $resultat = $bdd->query($sql);
     }
 } else {
-    echo "<p>Veuillez remplir au moins un champ de recherche.</p>";
+    echo "<script>alert('Veuillez remplir au moins un champ de recherche.')</script>";
+    echo "<button> <a href='consultation.html'>Retour</a></button>";
 }
 
 if (!empty($resultat)) {
@@ -61,13 +63,13 @@ if (!empty($resultat)) {
     foreach ($liste_etudiant as $row) {
         $N++;
         if ($row['Absence']==1){
-            $abs = "<select name='absence_".$N."'><option value='1'>ABJ</option><option value='0'>Présent</option><option value='2'>ABI</option></select>";
+            $abs = "<select class='table-select' name='absence_".$N."'><option value='1'>ABJ</option><option value='0'>Présent</option><option value='2'>ABI</option></select>";
         } 
         elseif ($row['Absence']==2){
-            $abs = "<select name='absence_".$N."'><option value='2'>ABI</option><option value='0'>Présent</option><option value='1'>ABJ</option></select>";
+            $abs = "<select class='table-select' name='absence_".$N."'><option value='2'>ABI</option><option value='0'>Présent</option><option value='1'>ABJ</option></select>";
         } 
         else {
-            $abs = "<select name='absence_".$N."'><option value='0'>Présent</option><option value='1'>ABJ</option><option value='2'>ABI</option></select>";
+            $abs = "<select class='table-select' name='absence_".$N."'><option value='0'>Présent</option><option value='1'>ABJ</option><option value='2'>ABI</option></select>";
         }
         if ($row['nom']!=$nom || $row['prenom']!=$prenom || $row['idEtudiant']!=$id) {
             echo "<tr><td colspan='3'><b>".$row['nom'].' '.$row['prenom'].' N°'.$row['idEtudiant']."</b></td></tr>";
@@ -79,15 +81,13 @@ if (!empty($resultat)) {
         echo "<input type='hidden' name='idAbsences_".$N."' value='".$row['idAbsences']."'>";
         echo "<td>" . $row['date_Cours'] . "</td>";
         echo "<td>" . $row['horaire'] . "</td>";
-        echo "<td>" . $abs . "</td>";
+        echo "<td class='select-cell'>" . $abs . "</td>";
         echo "</tr>";   
     }
     echo "<table>";
     echo "<input type='hidden' name='N' value='".$N."'>";
     echo "<input type='submit' value='Modifier'>";
     echo "</form>";
-
-    
 }
 
 ?>

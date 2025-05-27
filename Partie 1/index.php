@@ -34,7 +34,6 @@ if (!empty($_POST["user"]) && !empty($_POST["mdp"])) {
         exit();
     }
     echo "<script>alert('Nom d\'utilisateur ou mot de passe incorrect.');</script>";
-    echo "Nom d'utilisateur ou mot de passe incorrect.";
 }
 ?> 
 

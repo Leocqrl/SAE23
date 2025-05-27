@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $bdd->query($requete[0]);
         }
     header('Location: consultation.html');
+    echo "<script>alert('Modification effectuée.')</script>";
 }
 
 ?>

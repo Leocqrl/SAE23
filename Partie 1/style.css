@@ -1,0 +1,156 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 20px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh; /* Utiliser presque toute la hauteur de la vue */
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px; /* Limite la largeur du formulaire */
+    box-sizing: border-box; /* Inclure le padding dans la largeur */
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #0056b3;
+    padding: 0 10px;
+}
+
+label {
+    display: inline-block; /* Pour aligner les labels */
+    width: 120px; /* Largeur fixe pour les labels */
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+select {
+    width: calc(100% - 130px); /* Largeur du champ moins la largeur du label et un peu de marge */
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Inclure le padding dans la largeur */
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+    margin-left: 10px; /* Espace entre les radios */
+}
+
+input[type="checkbox"] {
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+input[type="submit"],
+input[type="reset"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    max-width: 800px; /* Limite la largeur du tableau */
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+/* Styles spécifiques pour le lien de consultation */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+a:hover {
+    background-color: #5a6268;
+}
+
+/* Styles pour les selects dans les tableaux (consultation.php) */
+.table-select {
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /* Optionnel: définir une hauteur minimale si nécessaire */
+    min-height: 25px;
+}
+
+.select-cell {
+    padding: 0;
+    margin: 0;
+}
+
+.select-cell select {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: none;
+    display: block;
+}
+
+table th:nth-child(2), 
+table td:nth-child(2) { 
+    width: 120px; 
+}
