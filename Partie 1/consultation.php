@@ -3,7 +3,7 @@
 $bdd=new mysqli("localhost","root","","SAE23");
 $resultat = null;
 
-if (((!empty($_POST['nom']) && !empty($_POST['prenom'])) || !empty($_POST['id'])) && (!empty($_POST['debut']) && !empty($_POST['fin']))) {
+if  (!empty($_POST['debut']) && !empty($_POST['fin'])) {
     if (!empty($_POST['nom']) && !empty($_POST['prenom'])) {
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
@@ -29,7 +29,7 @@ if (((!empty($_POST['nom']) && !empty($_POST['prenom'])) || !empty($_POST['id'])
     // Joindre les conditions avec 'AND'
     if (!empty($conditions)){
         $fin_requete = implode(' AND ', $conditions);
-        $sql="SELECT * FROM Etudiant E INNER JOIN Absences A ON E.idEtudiant=A.idEtudiant WHERE $fin_requete";
+        $sql="SELECT * FROM Etudiant E INNER JOIN Absences A ON E.idEtudiant=A.idEtudiant WHERE $fin_requete ORDER BY E.idEtudiant, A.date_Cours, A.horaire;";
     }
     if (!empty($fin_requete)){
         $resultat = $bdd->query($sql);
@@ -52,10 +52,12 @@ if (!empty($resultat)) {
             'idAbsences' => $row['idAbsences']
         ];
     }
-    echo "<h3>".$liste_etudiant[0]['nom'].' '.$liste_etudiant[0]['prenom'].' N°'.$liste_etudiant[0]['idEtudiant']."</h3>";
     echo "<table>";
     echo "<tr><th>Date de Cours</th><th>Horaire</th><th>Absence</th></tr>";
     $N=0;
+    $nom = '';
+    $prenom = '';
+    $id = '';
     foreach ($liste_etudiant as $row) {
         $N++;
         if ($row['Absence']==1){
@@ -66,6 +68,12 @@ if (!empty($resultat)) {
         } 
         else {
             $abs = "<select name='absence_".$N."'><option value='0'>Présent</option><option value='1'>ABJ</option><option value='2'>ABI</option></select>";
+        }
+        if ($row['nom']!=$nom || $row['prenom']!=$prenom || $row['idEtudiant']!=$id) {
+            echo "<tr><td colspan='3'><b>".$row['nom'].' '.$row['prenom'].' N°'.$row['idEtudiant']."</b></td></tr>";
+            $nom = $row['nom'];
+            $prenom = $row['prenom'];
+            $id = $row['idEtudiant'];
         }
         echo "<tr>";
         echo "<input type='hidden' name='idAbsences_".$N."' value='".$row['idAbsences']."'>";
