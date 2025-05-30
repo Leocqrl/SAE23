@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 50px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#zoneSurvol {
+    width: 200px;
+    height: 100px;
+    background-color: lightblue;
+    border: 1px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    width: 300px;
+}
+
+/* Styles pour le détecteur de mouvement (Exercice 3) */
+#zoneDessin {
+    width: 400px;
+    height: 250px;
+    border: 2px solid #333;
+    background-color: #f0f0f0;
+    cursor: crosshair;
+    position: relative; /* Important pour le positionnement absolu des points */
+}
+
+.point {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: blue;
+    border-radius: 50%;
+}

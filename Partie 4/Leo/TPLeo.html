@@ -1,11 +1,55 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>TP JS</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP Événements JavaScript</title>
     <link rel="stylesheet" href="TP_Leo.css">
 </head>
 <body>
-    ...
+    <h1>Gestion d'Événements</h1>
+
+    <button id="monBoutonHTML" onclick="alert('Bouton cliqué via attribut HTML!')">Cliquez-moi (HTML)</button>
+
+    <button id="monBoutonDOM0">Cliquez-moi (DOM Level 0)</button>
+
+    <button id="monBoutonDOM2">Cliquez-moi (DOM Level 2)</button>
+
+    <p id="messageInteraction">Interaction : Aucune</p>
+    <p id="contenuChamp"></p> <div id="zoneSurvol">
+        Survolez-moi
+    </div>
+
+    <p id="coordonneesSouris">X: 0, Y: 0</p>
+
+    <input type="text" id="champTexte" placeholder="Tapez du texte ici...">
+    <p id="affichageTouche">Dernière touche pressée : </p>
+
+    <h2>Interactions Avancées</h2>
+
+    <form id="monFormulaire">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
+        <button type="submit">Soumettre</button>
+        <p id="messageForm"></p>
+    </form>
+
+    <a href="https://www.google.com" id="monLien">Lien vers Google (cliquez pour annuler)</a>
+    <p id="messageLien"></p>
+
+    <h2>Liste Interactive</h2>
+    <ul id="listeDynamique">
+        <li>Élément 1</li>
+        <li>Élément 2</li>
+        <li>Élément 3</li>
+    </ul>
+    <button id="ajouterElement">Ajouter un élément</button>
+
+    <h2>Détecteur de Mouvement</h2>
+    <div id="zoneDessin"></div>
+    <p id="resultatDetection">Détection : Aucune</p>
+    <button id="resetDetection">Réinitialiser</button>
+
+    <script src="JSLeo.js"></script>
 </body>
 </html>
