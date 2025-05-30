@@ -1,0 +1,174 @@
+/* style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+:root {
+    --bg-primary: #f3f4f6;
+    --bg-secondary: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --text-accent-blue: #2563eb;
+    --text-accent-red: #dc2626;
+    --text-accent-green: #16a34a;
+    --border-color: #d1d5db;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --message-info-bg: #dbeafe;
+    --message-info-text: #1e40af;
+    --message-success-bg: #dcfce7;
+    --message-success-text: #15803d;
+    --message-error-bg: #fee2e2;
+    --message-error-text: #991b1b;
+    --bg-todo-item: #f9fafb;
+    --bg-todo-completed: #e2e8f0;
+}
+
+body.dark-theme {
+    --bg-primary: #1a202c;
+    --bg-secondary: #2d3748;
+    --text-primary: #f7fafc;
+    --text-secondary: #a0aec0;
+    --text-accent-blue: #60a5fa;
+    --text-accent-red: #f87171;
+    --text-accent-green: #4ade80;
+    --border-color: #4a5568;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --message-info-bg: #1e3a8a;
+    --message-info-text: #bfdbfe;
+    --message-success-bg: #064e3b;
+    --message-success-text: #a7f3d0;
+    --message-error-bg: #7f1d1d;
+    --message-error-text: #fca5a5;
+    --bg-todo-item: #1f2937;
+    --bg-todo-completed: #374151;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+section {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    box-shadow: 0 10px 15px -3px var(--shadow-color), 0 4px 6px -2px var(--shadow-color);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+h1, h2 {
+    color: var(--text-primary);
+}
+
+p, label {
+    color: var(--text-secondary);
+}
+
+#counter-display {
+    color: var(--text-accent-blue);
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+}
+
+input[type="number"],
+input[type="text"] {
+    border-color: var(--border-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+.message-area {
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(10px);
+}
+
+.message-area.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.message-area.message-info {
+    background-color: var(--message-info-bg);
+    color: var(--message-info-text);
+}
+.message-area.message-success {
+    background-color: var(--message-success-bg);
+    color: var(--message-success-text);
+}
+.message-area.message-error {
+    background-color: var(--message-error-bg);
+    color: var(--message-error-text);
+}
+
+#todo-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-todo-item);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+}
+
+#todo-list li.completed {
+    text-decoration: line-through;
+    opacity: 0.8;
+    background-color: var(--bg-todo-completed);
+    color: var(--text-secondary);
+}
+
+#todo-list li button {
+    margin-left: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    border-radius: 0.375rem;
+    box-shadow: none;
+}
+
+#todo-list li button:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+#draggable {
+    cursor: grab;
+    transition: background-color 0.2s ease;
+    background-color: var(--text-accent-blue);
+}
+
+#draggable.dragging {
+    cursor: grabbing;
+    background-color: var(--text-accent-red);
+}
+
+.input-error {
+    border-color: var(--text-accent-red) !important;
+}
+
+.error-message {
+    color: var(--text-accent-red);
+}
