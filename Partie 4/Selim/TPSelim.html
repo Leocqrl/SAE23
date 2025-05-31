@@ -3,97 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP JavaScript - Interactions Avancées</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>TP JS Ultra Simple</title>
     <link rel="stylesheet" href="TP_Selim.css">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
 </head>
-<body class="bg-gray-100 flex flex-col items-center p-4 min-h-screen">
+<body>
+    <div class="section-tp">
+        <h2>Compteur</h2>
+        <p>Valeur: <span id="compteur">0</span></p>
+        <button id="moins">Moins</button>
+        <button id="plus">Plus</button>
+        <button id="reset">Reset</button>
+        <p class="message-info" id="msg-compteur"></p>
+    </div>
 
-    <section id="counter-section" class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md text-center mb-8">
-        <h1 class="text-3xl font-bold mb-6">Partie 1: Compteur Interactif</h1>
-
-        <div class="mb-8">
-            <p class="text-lg">Valeur actuelle :</p>
-            <span id="counter-display" class="text-6xl font-extrabold">0</span>
-        </div>
-
-        <div class="flex justify-center space-x-4 mb-6">
-            <button id="decrement-btn" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
-                Décrémenter
-            </button>
-            <button id="increment-btn" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
-                Incrémenter
-            </button>
-        </div>
-
-        <div class="flex flex-col items-center space-y-4">
-            <button id="reset-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 w-full max-w-xs">
-                Réinitialiser
-            </button>
-
-            <div class="w-full max-w-xs mt-4">
-                <label for="step-input" class="block text-sm font-bold mb-2">
-                    Pas d'incrémentation/décrémentation :
-                </label>
-                <input type="number" id="step-input" value="1" min="1" class="shadow appearance-none border rounded-lg w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300 ease-in-out">
-            </div>
-        </div>
-
-        <div id="message-area" class="mt-8 p-4 rounded-lg hidden">
-            </div>
-    </section>
-
-    <section id="validation-form-section" class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md text-center mb-8">
-        <h2 class="text-2xl font-bold mb-6">Partie 2: Formulaire de Validation</h2>
-        <form id="user-form" class="flex flex-col items-center space-y-4">
-            <div class="w-full max-w-xs">
-                <label for="username-input" class="block text-sm font-bold mb-2">
-                    Nom d'utilisateur (min 3 caractères) :
-                </label>
-                <input type="text" id="username-input" class="shadow appearance-none border rounded-lg w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300 ease-in-out">
-                <p id="username-error" class="text-xs italic text-left mt-1 hidden"></p>
-            </div>
-            <button type="submit" class="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 w-full max-w-xs">
-                Valider
-            </button>
-            <p id="form-success-message" class="text-sm mt-2 hidden"></p>
+    <div class="section-tp">
+        <h2>Formulaire</h2>
+        <form id="form-user">
+            <label for="nom">Nom (min 3):</label>
+            <input type="text" id="nom">
+            <p class="message-erreur" id="err-nom"></p>
+            <button type="submit">Valider</button>
+            <p class="message-succes" id="msg-form"></p>
         </form>
-    </section>
+    </div>
 
-    <section id="todo-list-section" class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md mb-8">
-        <h2 class="text-2xl font-bold mb-6 text-center">Partie 3: Liste de Tâches</h2>
-        <div class="flex mb-4">
-            <input type="text" id="new-todo-input" placeholder="Ajouter une nouvelle tâche..." class="shadow appearance-none border rounded-l-lg w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300 ease-in-out">
-            <button id="add-todo-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-r-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
-                Ajouter
-            </button>
+    <div class="section-tp">
+        <h2>Tâches</h2>
+        <div>
+            <input type="text" id="tache-txt" placeholder="Nouvelle tâche...">
+            <button id="add-tache">Ajouter</button>
         </div>
-        <ul id="todo-list" class="space-y-2">
-            </ul>
-        <p id="todo-message" class="text-sm mt-4 text-center hidden"></p>
-    </section>
+        <ul id="liste-taches"></ul>
+        <p class="message-info" id="msg-taches"></p>
+    </div>
 
-    <section id="theme-switcher-section" class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md text-center mb-8">
-        <h2 class="text-2xl font-bold mb-6">Partie 4: Changement de Thème</h2>
-        <button id="theme-toggle-btn" class="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
-            Basculer le Thème (Clair/Sombre)
-        </button>
-        <p id="theme-message" class="text-sm mt-4 hidden"></p>
-    </section>
+    <div class="section-tp">
+        <h2>Thème</h2>
+        <button id="toggle-theme">Changer Thème</button>
+        <p class="message-info" id="msg-theme"></p>
+    </div>
 
-    <section id="drag-drop-section" class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md text-center relative overflow-hidden min-h-[200px]">
-        <h2 class="text-2xl font-bold mb-6">Partie 5: Glisser-Déposer</h2>
-        <div id="draggable" class="w-24 h-24 rounded-lg cursor-grab absolute flex items-center justify-center text-white font-bold text-lg shadow-xl">
-            Glissez Moi!
-        </div>
-        <p class="text-sm mt-4">Cliquez et glissez le carré bleu.</p>
-    </section>
-
+    <div class="section-tp" id="section-glisser-deposer">
+        <h2>Glisser-Déposer</h2>
+        <div id="element-deplacable">Glissez</div>
+        <p class="message-info">Déplacez le carré.</p>
+    </div>
 
     <script src="JSSelim.js"></script>
 </body>
