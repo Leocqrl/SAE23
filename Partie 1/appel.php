@@ -22,7 +22,6 @@
                 $sql="SELECT groupe,idEtudiant,nom,prenom FROM Etudiant;";
                 $resultat=$bdd->query($sql);
                 $N=0;
-                $liste_etudiant = [];
                 if (!empty($resultat)) {
                     while ($row = $resultat->fetch_assoc()) {
                         $N++;

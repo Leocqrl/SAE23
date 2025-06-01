@@ -133,7 +133,7 @@ a:hover {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    /* Optionnel: définir une hauteur minimale si nécessaire */
+    /* Définir une hauteur minimale */
     min-height: 25px;
 }
 
