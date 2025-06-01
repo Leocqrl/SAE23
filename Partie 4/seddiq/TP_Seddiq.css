@@ -1,0 +1,46 @@
+/* Style général de la page */
+body {
+  font-family: sans-serif;          /* Police simple pour la lisibilité */
+  text-align: center;               /* Centrage du texte */
+  background-color: #f5f5f5;        /* Couleur de fond gris clair */
+  margin: 20px;                     /* Marge extérieure */
+}
+
+/* Chaque section (jeu) est dans un encadré */
+section {
+  margin: 30px auto;                /* Espacement autour et centrage */
+  padding: 20px;                    /* Espacement intérieur */
+  width: 80%;                       /* Largeur relative à la fenêtre */
+  border: 2px solid #ccc;           /* Bordure grise claire */
+  background: white;                /* Fond blanc pour contraster */
+  border-radius: 10px;              /* Coins arrondis */
+}
+
+/* Zone de jeu des cibles */
+#targetZone {
+  width: 400px;                     /* Largeur fixe */
+  height: 250px;                    /* Hauteur fixe */
+  border: 1px dashed black;         /* Bordure en pointillés noirs */
+  margin: auto;                     /* Centrage horizontal */
+  position: relative;               /* Position relative pour placer des éléments absolus dedans */
+  background-color: #eee;           /* Fond gris clair */
+}
+
+/* Style de la cible */
+.target {
+  width: 40px;                      /* Taille de la cible */
+  height: 40px;
+  background: crimson;             /* Couleur rouge foncé */
+  border-radius: 50%;              /* Forme ronde */
+  position: absolute;              /* Position absolue dans le conteneur */
+  cursor: pointer;                 /* Curseur de type "main" */
+}
+
+/* Zone colorée pour le jeu 3 */
+#colorBox {
+  width: 200px;                     /* Largeur fixe */
+  height: 100px;                    /* Hauteur fixe */
+  background-color: lightblue;     /* Couleur initiale */
+  margin: 10px auto;                /* Centrage et marge */
+  line-height: 100px;              /* Centrer verticalement le texte */
+}
